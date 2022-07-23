@@ -1,9 +1,18 @@
 import { Dispatch } from 'redux';
-import { loadTodosAction } from './reducers/todosReducer';
+import { setTodosAction } from './reducers/todosReducer';
+import { setUserAction } from './reducers/userReducer';
 
-const todosApi = 'https://mate.academy/students-api/todos';
-// const usersApi = 'https://mate.academy/students-api/users';
+const url = 'https://mate.academy/students-api/';
+const todosApi = url + 'todos/';
+const usersApi = url + 'users/';
 
-export const loadTodos = (dispatch: Dispatch) => fetch(todosApi)
-  .then((response) => response.json())
-  .then((todos) => dispatch(loadTodosAction(todos)));
+export const loadTodos = (dispatch: Dispatch) =>
+  fetch(todosApi)
+    .then((response) => response.json())
+    .then((data) => dispatch(setTodosAction(data)));
+
+export const loadUser = (dispatch: Dispatch, endPoint: string | number = '') =>
+  fetch(usersApi + endPoint)
+    .then((response) => response.json())
+    .then((data) => dispatch(setUserAction(data)))
+    .catch(() => dispatch(setUserAction(null)));

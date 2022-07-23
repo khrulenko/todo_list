@@ -12,17 +12,17 @@ export type Todo = {
 export type Todos = Array<Todo>;
 
 // Action types - is just a constant. MUST have a unique value.
-const LOAD_TODOS = 'TODOS/LOAD';
+const SET_TODOS = 'SET/TODOS';
 
 // Action creators - a function returning an action object
-export const loadTodosAction = (todos: Todos) => ({
-  type: LOAD_TODOS,
+export const setTodosAction = (todos: Todos) => ({
+  type: SET_TODOS,
   payload: todos,
 });
 
 const todosReducer = (state: Todos = [], action: AnyAction) => {
   switch (action.type) {
-    case LOAD_TODOS:
+    case SET_TODOS:
       return [...action.payload];
 
     default:

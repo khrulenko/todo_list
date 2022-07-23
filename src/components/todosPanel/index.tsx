@@ -9,49 +9,54 @@ import TodoList from '../todoList';
 import Input from '../input';
 import { capitalizeFirstLetter } from '../../utils';
 import { ChangeEvent } from '../../types';
+import { Filters } from '../../constants';
+import { setUserAction } from '../../reducers/userReducer';
 
-const TodosPanel = (props: {}) => {
-  const [searchQuery, searchQuerySet] = useState('');
-  const [completenessFilter, completenessFilterSet] = useState('all');
-  const todosPanelStyle = useMultiStyleConfig('todosPanel', props);
+const TodosPanel = () => {
+  const [searchQuery, searchQuerySet] = useState<string>('');
+  const [activeFilter, activeFilterSet] = useState<Filters>(Filters.All);
+  const todosPanelStyle = useMultiStyleConfig('todosPanel', {});
 
   const dispatch = useDispatch();
   const onLoad = () => loadTodos(dispatch);
   const onRefresh = () => {
     searchQuerySet('');
+    activeFilterSet(Filters.All);
     onLoad();
+    dispatch(setUserAction(null));
   };
 
-  const onSearchChange = (event: ChangeEvent) => searchQuerySet(event.target.value);
-  const filterByTitle = (todos: Todos) => todos.filter((todo) => todo.title.toLowerCase().includes(searchQuery));
+  const onSearchChange = (event: ChangeEvent) =>
+    searchQuerySet(event.target.value);
+  const filterByTitle = (todos: Todos) =>
+    todos.filter((todo) => todo.title.toLowerCase().includes(searchQuery));
   const filterBycompleteness = (todos: Todos, filter: string) => {
     switch (filter) {
-      case 'active':
+      case Filters.Active:
         return todos.filter((todo) => !todo.completed);
 
-      case 'completed':
+      case Filters.Completed:
         return todos.filter((todo) => todo.completed);
 
       default:
         return todos;
     }
   };
-
-  const isFilterActive = (filter: string) => completenessFilter === filter;
+  const isFilterActive = (filter: string) => filter === activeFilter;
 
   const todos = useSelector(getTodos);
+  const areTodosLoaded = !!todos.length;
   const filteredTodos = filterBycompleteness(
     filterByTitle(todos),
-    completenessFilter,
+    activeFilter
   );
-  const areTodosLoaded = !!todos.length;
 
-  const createFilterButton = (filterName: string) => (
+  const createFilterButton = (filterName: Filters) => (
     <Button
       size="md"
       variant="filter"
       isActive={isFilterActive(filterName)}
-      onClick={() => completenessFilterSet(filterName)}
+      onClick={() => activeFilterSet(filterName)}
     >
       {capitalizeFirstLetter(filterName)}
     </Button>
@@ -73,11 +78,9 @@ const TodosPanel = (props: {}) => {
 
       {areTodosLoaded && (
         <Flex justify="center" gap="10px">
-          {createFilterButton('all')}
-
-          {createFilterButton('active')}
-
-          {createFilterButton('completed')}
+          {createFilterButton(Filters.All)}
+          {createFilterButton(Filters.Active)}
+          {createFilterButton(Filters.Completed)}
         </Flex>
       )}
 

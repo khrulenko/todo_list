@@ -1,15 +1,16 @@
 import { ComponentStyleConfig } from '@chakra-ui/theme';
 
-const todosPanelStyle: ComponentStyleConfig = {
+const userPanelStyle: ComponentStyleConfig = {
   baseStyle: {
+    position: 'sticky',
+    top: '20px',
     padding: '20px',
-    width: '60%',
-    minWidth: '300px',
-    maxWidth: '500px',
+    width: '40%',
+    maxWidth: '300px',
     height: 'min-content',
     borderRadius: '6px',
     backgroundColor: '#FBF8F1',
   },
 };
 
-export default todosPanelStyle;
+export default userPanelStyle;

@@ -8,7 +8,7 @@ const todosPanelStyle: ComponentStyleConfig = {
     maxWidth: '500px',
     height: 'min-content',
     borderRadius: '6px',
-    backgroundColor: '#FBF8F1',
+    backgroundColor: 'cream.light',
   },
 };
 

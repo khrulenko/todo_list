@@ -7,7 +7,7 @@ const globalStyles = {
     body: {
       padding: '40px',
       fontFamily: "'Open Sans', sans-serif",
-      backgroundColor: '#E9DAC1',
+      backgroundColor: 'cream.dark',
     },
   },
 };

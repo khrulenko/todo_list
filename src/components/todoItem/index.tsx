@@ -1,7 +1,8 @@
 import { Flex, useMultiStyleConfig, Text, Box } from '@chakra-ui/react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { loadUser } from '../../api';
 import { Todo } from '../../reducers/todosReducer';
+import { getUser } from '../../store';
 import Button from '../button';
 
 type Props = {
@@ -12,6 +13,7 @@ type Props = {
 const TodoItem = (props: Props) => {
   const { todo, index } = props;
   const { title, userId } = todo;
+  const user = useSelector(getUser);
 
   const todoStyle = useMultiStyleConfig('todo', props);
 
@@ -25,7 +27,12 @@ const TodoItem = (props: Props) => {
           <b>{index}.</b> {title}
         </Text>
 
-        <Button variant="choseUser" size="sm" onClick={onLoad}>
+        <Button
+          isActive={userId === user?.id}
+          variant="choseUser"
+          size="sm"
+          onClick={onLoad}
+        >
           user #
           <br />
           {userId}

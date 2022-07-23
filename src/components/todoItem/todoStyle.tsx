@@ -8,7 +8,7 @@ const todoStyle: ComponentStyleConfig = {
       position: 'relative',
       padding: '15px',
       marginBottom: '10px',
-      bgColor: '#F7ECDE',
+      bgColor: 'cream.base',
       borderRadius: '6px',
       fontSize: '18px',
 
@@ -20,7 +20,7 @@ const todoStyle: ComponentStyleConfig = {
         left: '0',
         width: '10px',
         height: '100%',
-        backgroundColor: isCompleted ? '#CEE5D0' : '#FAD9A1',
+        backgroundColor: isCompleted ? 'green.light' : 'orange.light',
         borderTopLeftRadius: '6px',
         borderBottomLeftRadius: '6px',
         zIndex: '5',

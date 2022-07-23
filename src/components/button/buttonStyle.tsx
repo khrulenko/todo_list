@@ -5,15 +5,24 @@ const buttonStyle: ComponentStyleConfig = {
     width: '150px',
     padding: '5px',
     marginBottom: '20px',
-    color: '#FBF8F1',
-    bgColor: '#54BAB9',
-    border: '1px solid #54BAB9',
+    color: 'cream.light',
+    bgColor: 'green.base',
+    border: '1px solid green.base',
     '&:hover': {
-      bgColor: '#54BAB9',
+      bgColor: 'green.base',
       opacity: '0.5',
     },
     '&:focus': {
       boxShadow: 'none',
+    },
+    '&:disabled': {
+      bgColor: 'green.base',
+      opacity: '0.5',
+      cursor: 'default',
+      '&:hover': {
+        bgColor: 'green.base',
+        opacity: '0.5',
+      },
     },
   },
   sizes: {
@@ -33,9 +42,7 @@ const buttonStyle: ComponentStyleConfig = {
       marginBottom: '0',
     },
     filter: (props) => ({
-      bgColor: '#54BAB9',
-      opacity: props.isActive ? '0.5' : '1',
-      cursor: props.isActive ? 'default' : 'pointer',
+      bgColor: 'green.base',
     }),
   },
   defaultProps: {

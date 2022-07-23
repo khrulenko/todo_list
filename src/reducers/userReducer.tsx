@@ -7,6 +7,8 @@ export type User = {
   email?: string;
   phone?: string;
   website?: string;
+  createdAt?: string;
+  updatedAt?: string;
 } | null;
 
 const SET_USER = 'SET/USER';

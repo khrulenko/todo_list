@@ -20,7 +20,19 @@ const theme = {
   styles: globalStyles,
   components: componentsList,
   colors: {
+    cream: {
+      dark: '#E9DAC1',
+      base: '#F7ECDE',
+      light: '#FBF8F1',
+    },
+    green: {
+      base: '#54BAB9',
+      light: '#CEE5D0',
+    },
     red: {},
+    orange: {
+      light: '#FAD9A1',
+    },
   },
   fontSizes: {},
 };

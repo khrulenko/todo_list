@@ -13,11 +13,11 @@ type Props = {
 };
 
 const Button = (props: Props) => {
-  const { onClick } = props;
+  const { onClick, isActive } = props;
   const buttonStyle = useMultiStyleConfig('button', props);
 
   return (
-    <ChakraButton sx={buttonStyle} onClick={onClick}>
+    <ChakraButton disabled={isActive} sx={buttonStyle} onClick={onClick}>
       {props?.children}
     </ChakraButton>
   );

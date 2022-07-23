@@ -12,8 +12,9 @@ const UserPanel = () => {
   const createDataRow = (title: string, data?: string | number) =>
     data && (
       <Box>
-        <Text fontWeight="bold">{title}:</Text>
-        <Text>{data}</Text>
+        <Text>
+          <b>{title}</b>: {data}
+        </Text>
       </Box>
     );
 
@@ -23,7 +24,9 @@ const UserPanel = () => {
         <Flex direction={'column'} gap="10px">
           {createDataRow('User', user.name)}
           {createDataRow('Nick name', user.username)}
+          {createDataRow('User ID', user.id)}
           {createDataRow('Email', user.email)}
+          {createDataRow('Phone', user.phone)}
           {createDataRow('Website', user.website)}
         </Flex>
       ) : (

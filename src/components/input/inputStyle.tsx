@@ -3,7 +3,7 @@ import { ComponentStyleConfig } from '@chakra-ui/theme';
 const inputStyle: ComponentStyleConfig = {
   baseStyle: {
     '&:hover, &:focus': {
-      borderColor: '#54BAB9',
+      borderColor: 'green.base',
       boxShadow: 'none',
     },
   },

@@ -10,26 +10,27 @@ import Input from '../input';
 import { capitalizeFirstLetter } from '../../utils';
 import { Filters } from '../../constants';
 import { setUserAction } from '../../reducers/userReducer';
+import { setRequestError } from '../../reducers/requestErrorReducer';
 
 const TodosPanel = () => {
   const [searchQuery, searchQuerySet] = useState<string>('');
   const [activeFilter, activeFilterSet] = useState<Filters>(Filters.All);
-  const todosPanelStyle = useMultiStyleConfig('todosPanel', {});
 
+  //functions:
   const dispatch = useDispatch();
   const onLoad = () => loadTodos(dispatch);
   const onRefresh = () => {
     searchQuerySet('');
     activeFilterSet(Filters.All);
     onLoad();
+    dispatch(setRequestError(null));
     dispatch(setUserAction(null));
   };
-
   const filterByTitle = (todos: Todos) =>
     todos.filter((todo) =>
       todo.title.toLowerCase().includes(searchQuery.toLowerCase())
     );
-  const filterBycompleteness = (todos: Todos, filter: string) => {
+  const filterByCompleteness = (todos: Todos, filter: string) => {
     switch (filter) {
       case Filters.Active:
         return todos.filter((todo) => !todo.completed);
@@ -43,16 +44,18 @@ const TodosPanel = () => {
   };
   const isFilterActive = (filter: string) => filter === activeFilter;
 
+  //data:
   const todos = useSelector(getTodos);
   const areTodosLoaded = !!todos.length;
-  const filteredTodos = filterBycompleteness(
+  const filteredTodos = filterByCompleteness(
     filterByTitle(todos),
     activeFilter
   );
 
+  //ui:
+  const todosPanelStyle = useMultiStyleConfig('todosPanel', {});
   const onClick = areTodosLoaded ? onRefresh : onLoad;
   const buttonText = areTodosLoaded ? 'REFRESH' : 'LOAD';
-
   const createFilterButton = (filterName: Filters) => (
     <Button
       size="md"

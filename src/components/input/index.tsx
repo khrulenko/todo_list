@@ -1,9 +1,11 @@
+import { CloseIcon } from '@chakra-ui/icons';
 import {
-  chakra,
+  Box,
+  Button,
   Input as ChakraInput,
   useMultiStyleConfig,
 } from '@chakra-ui/react';
-import { AnyFunction } from '../../types';
+import { AnyFunction, ChangeEvent } from '../../types';
 
 type Props = {
   type?: string;
@@ -13,21 +15,26 @@ type Props = {
 };
 
 const Input = (props: Props) => {
-  const {
-    type = 'text', placeholder = 'enter', value, onChange,
-  } = props;
+  const { type = 'text', placeholder = 'enter', value, onChange } = props;
+  const onHandleChange = (event: ChangeEvent) => onChange(event.target.value);
+  const onHandleClear = () => onChange('');
 
-  const inputStyle = useMultiStyleConfig('input', props);
+  const styles = useMultiStyleConfig('input', props);
 
   return (
-    <ChakraInput
-      sx={inputStyle}
-      type={type}
-      placeholder={placeholder}
-      value={value}
-      onChange={onChange}
-    />
+    <Box sx={styles.wrapper}>
+      <ChakraInput
+        sx={styles.input}
+        type={type}
+        placeholder={placeholder}
+        value={value}
+        onChange={onHandleChange}
+      />
+      <Button sx={styles.clear} size="sm" onClick={onHandleClear}>
+        <CloseIcon color="green.base" />
+      </Button>
+    </Box>
   );
 };
 
-export default chakra(Input);
+export default Input;

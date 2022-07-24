@@ -8,7 +8,6 @@ import Button from '../button';
 import TodoList from '../todoList';
 import Input from '../input';
 import { capitalizeFirstLetter } from '../../utils';
-import { ChangeEvent } from '../../types';
 import { Filters } from '../../constants';
 import { setUserAction } from '../../reducers/userReducer';
 
@@ -26,8 +25,6 @@ const TodosPanel = () => {
     dispatch(setUserAction(null));
   };
 
-  const onSearchChange = (event: ChangeEvent) =>
-    searchQuerySet(event.target.value);
   const filterByTitle = (todos: Todos) =>
     todos.filter((todo) => todo.title.toLowerCase().includes(searchQuery));
   const filterBycompleteness = (todos: Todos, filter: string) => {
@@ -72,7 +69,7 @@ const TodosPanel = () => {
         <Input
           placeholder="search"
           value={searchQuery}
-          onChange={onSearchChange}
+          onChange={searchQuerySet}
         />
       </Flex>
 

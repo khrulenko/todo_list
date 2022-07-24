@@ -5,7 +5,7 @@ type Props = {
   todos: Todos;
 };
 
-const TodoList = ({ todos }: Props) => {
+const TodosList = ({ todos }: Props) => {
   const areThereTodosToShow = !!todos.length;
 
   return (
@@ -18,4 +18,4 @@ const TodoList = ({ todos }: Props) => {
   );
 };
 
-export default TodoList;
+export default TodosList;

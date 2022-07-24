@@ -5,7 +5,7 @@ import { loadTodos } from '../../api';
 import { Todos } from '../../reducers/todosReducer';
 import { getTodos } from '../../store';
 import Button from '../button';
-import TodoList from '../todoList';
+import TodosList from '../todosList';
 import Input from '../input';
 import { capitalizeFirstLetter } from '../../utils';
 import { Filters } from '../../constants';
@@ -89,7 +89,7 @@ const TodosPanel = () => {
         </Flex>
       )}
 
-      <TodoList todos={filteredTodos} />
+      <TodosList todos={filteredTodos} />
     </Box>
   );
 };

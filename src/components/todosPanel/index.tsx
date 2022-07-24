@@ -55,7 +55,7 @@ const TodosPanel = () => {
     <Button
       size="md"
       variant="filter"
-      isActive={isFilterActive(filterName)}
+      disabled={isFilterActive(filterName)}
       onClick={() => activeFilterSet(filterName)}
     >
       {capitalizeFirstLetter(filterName)}

@@ -29,7 +29,6 @@ const theme = {
       base: '#54BAB9',
       light: '#CEE5D0',
     },
-    red: {},
     orange: {
       light: '#FAD9A1',
     },

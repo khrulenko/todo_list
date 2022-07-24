@@ -5,7 +5,7 @@ type ButtonSizes = 'sm' | 'md' | 'lg';
 type ButtonVariants = 'choseUser' | 'filter';
 
 type Props = {
-  isActive?: boolean;
+  disabled?: boolean;
   variant?: ButtonVariants;
   size?: ButtonSizes;
   onClick: AnyFunction;
@@ -13,11 +13,11 @@ type Props = {
 };
 
 const Button = (props: Props) => {
-  const { onClick, isActive } = props;
+  const { onClick, disabled } = props;
   const buttonStyle = useMultiStyleConfig('button', props);
 
   return (
-    <ChakraButton disabled={isActive} sx={buttonStyle} onClick={onClick}>
+    <ChakraButton disabled={disabled} sx={buttonStyle} onClick={onClick}>
       {props?.children}
     </ChakraButton>
   );

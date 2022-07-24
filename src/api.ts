@@ -15,4 +15,10 @@ export const loadUser = (dispatch: Dispatch, endPoint: string | number = '') =>
   fetch(usersApi + endPoint)
     .then((response) => response.json())
     .then((data) => dispatch(setUserAction(data)))
-    .catch(() => dispatch(setUserAction(null)));
+    .catch(() =>
+      dispatch(
+        setUserAction({
+          id: `threre are some issues to load a user with ID ${endPoint}`,
+        })
+      )
+    );

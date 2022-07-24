@@ -28,7 +28,7 @@ const TodoItem = (props: Props) => {
         </Text>
 
         <Button
-          disabled={userId === user?.id}
+          disabled={userId === user?.id || !userId}
           variant="choseUser"
           size="sm"
           onClick={onLoad}

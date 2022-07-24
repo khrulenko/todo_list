@@ -18,22 +18,18 @@ const UserPanel = () => {
       </Box>
     );
 
-  return (
+  return isUserLoaded ? (
     <Box sx={userPanelStyle}>
-      {isUserLoaded ? (
-        <Flex direction={'column'} gap="10px">
-          {createDataRow('User', user.name)}
-          {createDataRow('Nick name', user.username)}
-          {createDataRow('User ID', user.id)}
-          {createDataRow('Email', user.email)}
-          {createDataRow('Phone', user.phone)}
-          {createDataRow('Website', user.website)}
-        </Flex>
-      ) : (
-        <b>There is no user yet</b>
-      )}
+      <Flex direction={'column'} gap="10px">
+        {createDataRow('User', user.name)}
+        {createDataRow('Nick name', user.username)}
+        {createDataRow('User ID', user.id)}
+        {createDataRow('Email', user.email)}
+        {createDataRow('Phone', user.phone)}
+        {createDataRow('Website', user.website)}
+      </Flex>
     </Box>
-  );
+  ) : null;
 };
 
 export default UserPanel;

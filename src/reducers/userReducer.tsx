@@ -1,8 +1,8 @@
 import { AnyAction } from 'redux';
 
 export type User = {
-  id?: string | number;
-  name: string;
+  id: string | number;
+  name?: string;
   username?: string;
   email?: string;
   phone?: string;

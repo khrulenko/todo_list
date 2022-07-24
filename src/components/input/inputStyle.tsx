@@ -8,6 +8,7 @@ const inputStyle: ComponentStyleConfig = {
       position: 'relative',
       alignItems: 'center',
       width: '100%',
+      maxWidth: '300px',
       height: '40px',
       '&:hover, &:focus': {
         borderColor: 'green.base',

@@ -26,7 +26,9 @@ const TodosPanel = () => {
   };
 
   const filterByTitle = (todos: Todos) =>
-    todos.filter((todo) => todo.title.toLowerCase().includes(searchQuery));
+    todos.filter((todo) =>
+      todo.title.toLowerCase().includes(searchQuery.toLowerCase())
+    );
   const filterBycompleteness = (todos: Todos, filter: string) => {
     switch (filter) {
       case Filters.Active:
@@ -48,6 +50,9 @@ const TodosPanel = () => {
     activeFilter
   );
 
+  const onClick = areTodosLoaded ? onRefresh : onLoad;
+  const buttonText = areTodosLoaded ? 'REFRESH' : 'LOAD';
+
   const createFilterButton = (filterName: Filters) => (
     <Button
       size="md"
@@ -61,16 +66,16 @@ const TodosPanel = () => {
 
   return (
     <Box sx={todosPanelStyle}>
-      <Flex justify="space-between" gap="10px">
-        <Button onClick={areTodosLoaded ? onRefresh : onLoad}>
-          {areTodosLoaded ? 'REFRESH' : 'LOAD'}
-        </Button>
+      <Flex justify="center" gap="10px">
+        <Button onClick={onClick}>{buttonText}</Button>
 
-        <Input
-          placeholder="search"
-          value={searchQuery}
-          onChange={searchQuerySet}
-        />
+        {areTodosLoaded && (
+          <Input
+            placeholder="search"
+            value={searchQuery}
+            onChange={searchQuerySet}
+          />
+        )}
       </Flex>
 
       {areTodosLoaded && (

@@ -10,11 +10,10 @@ const TodoList = ({ todos }: Props) => {
 
   return (
     <>
-      {areThereTodosToShow ? (
-        todos.map((todo, i) => <TodoItem todo={todo} index={i + 1} />)
-      ) : (
-        <b>Sorry, there are no todos yet.</b>
-      )}
+      {areThereTodosToShow &&
+        todos.map((todo, i) => (
+          <TodoItem key={todo.id} todo={todo} index={i + 1} />
+        ))}
     </>
   );
 };

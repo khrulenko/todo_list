@@ -1,4 +1,8 @@
-import { Button as ChakraButton, useMultiStyleConfig } from '@chakra-ui/react';
+import {
+  Button as ChakraButton,
+  chakra,
+  useMultiStyleConfig,
+} from '@chakra-ui/react';
 import { AnyFunction } from '../../types';
 
 type ButtonSizes = 'sm' | 'md' | 'lg';
@@ -23,4 +27,4 @@ const Button = (props: Props) => {
   );
 };
 
-export default Button;
+export default chakra(Button);

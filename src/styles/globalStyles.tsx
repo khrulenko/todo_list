@@ -3,9 +3,8 @@ const globalStyles = {
     '*': {
       boxSizing: 'border-box',
     },
-    'html, body, #root': {},
     body: {
-      padding: '40px',
+      padding: '24px',
       fontFamily: "'Open Sans', sans-serif",
       backgroundColor: 'cream.dark',
     },

@@ -6,6 +6,7 @@ import todosPanelStyle from '../components/todosPanel/styles';
 import todoStyle from '../components/todoItem/styles';
 import userPanelStyle from '../components/userPanel/styles';
 import errorAlertStyle from '../components/errorAlert/styles';
+import plugStyle from '../components/plug/styles';
 
 // color palette: https://colorhunt.co/palette/fbf8f1f7ecdee9dac154bab9
 
@@ -16,6 +17,7 @@ const componentsList = {
   todo: todoStyle,
   input: inputStyle,
   errorAlert: errorAlertStyle,
+  plug: plugStyle,
 };
 
 const theme = {

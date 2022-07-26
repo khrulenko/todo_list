@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Box, Flex, useMultiStyleConfig } from '@chakra-ui/react';
+import { Box, Flex, useMultiStyleConfig, Text, VStack } from '@chakra-ui/react';
 import { useDispatch, useSelector } from 'react-redux';
 import { loadTodos } from '../../api';
 import { Todos } from '../../reducers/todosReducer';
@@ -11,6 +11,7 @@ import { capitalizeFirstLetter } from '../../utils';
 import { Filters } from '../../constants';
 import { setUserAction } from '../../reducers/userReducer';
 import { setRequestError } from '../../reducers/requestErrorReducer';
+import Plug from '../plug';
 
 const TodosPanel = () => {
   const [searchQuery, searchQuerySet] = useState<string>('');
@@ -51,11 +52,11 @@ const TodosPanel = () => {
     filterByTitle(todos),
     activeFilter
   );
+  const areThereTodosToShow = !!filteredTodos.length;
+  const plugText = 'there are no todos';
 
   //ui:
   const todosPanelStyle = useMultiStyleConfig('todosPanel', {});
-  const onClick = areTodosLoaded ? onRefresh : onLoad;
-  const buttonText = areTodosLoaded ? 'REFRESH' : 'LOAD';
   const createFilterButton = (filterName: Filters) => (
     <Button
       size="md"
@@ -67,30 +68,39 @@ const TodosPanel = () => {
     </Button>
   );
 
-  return (
+  return areTodosLoaded ? (
     <Box sx={todosPanelStyle}>
       <Flex justify="center" gap="10px">
-        <Button onClick={onClick}>{buttonText}</Button>
+        <Button onClick={onRefresh}>REFRESH</Button>
 
-        {areTodosLoaded && (
-          <Input
-            placeholder="search"
-            value={searchQuery}
-            onChange={searchQuerySet}
-          />
-        )}
+        <Input
+          placeholder="search"
+          value={searchQuery}
+          onChange={searchQuerySet}
+        />
       </Flex>
 
-      {areTodosLoaded && (
-        <Flex justify="center" gap="10px">
-          {createFilterButton(Filters.All)}
-          {createFilterButton(Filters.Active)}
-          {createFilterButton(Filters.Completed)}
-        </Flex>
-      )}
+      <Flex justify="center" gap="10px">
+        {createFilterButton(Filters.All)}
+        {createFilterButton(Filters.Active)}
+        {createFilterButton(Filters.Completed)}
+      </Flex>
 
-      <TodosList todos={filteredTodos} />
+      {areThereTodosToShow ? (
+        <TodosList todos={filteredTodos} />
+      ) : (
+        <Plug size="lg">{plugText}</Plug>
+      )}
     </Box>
+  ) : (
+    <Plug size="md">
+      <VStack gap="18px">
+        <Text>{plugText}</Text>
+        <Button variant="start" onClick={onLoad}>
+          LOAD TODOS
+        </Button>
+      </VStack>
+    </Plug>
   );
 };
 

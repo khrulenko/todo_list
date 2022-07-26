@@ -8,7 +8,7 @@ const todosApi = url + 'todos/';
 const usersApi = url + 'users/';
 
 const createUserLoadError = (endPoint: string | number) =>
-  `Error loading a user with ID ${endPoint}`;
+  `Error loading a user ${endPoint}`;
 
 export const loadTodos = (dispatch: Dispatch) =>
   fetch(todosApi)

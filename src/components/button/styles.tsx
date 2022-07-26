@@ -45,6 +45,30 @@ const buttonStyle: ComponentStyleConfig = {
     filter: (props) => ({
       bgColor: 'green.base',
     }),
+    start: {
+      border: '1px solid',
+      borderColor: 'cream.dark',
+      bgColor: 'cream.dark',
+      color: 'cream.light',
+      '&:hover': {
+        bgColor: 'cream.light',
+        color: 'cream.dark',
+        opacity: '1',
+      },
+      '&:focus': {
+        boxShadow: 'none',
+      },
+      '&:disabled': {
+        bgColor: 'cream.light',
+        opacity: '1',
+        cursor: 'default',
+        color: 'cream.dark',
+        '&:hover': {
+          bgColor: 'cream.light',
+          opacity: '1',
+        },
+      },
+    },
   },
   defaultProps: {
     size: 'lg',

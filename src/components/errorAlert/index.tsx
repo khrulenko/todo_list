@@ -1,5 +1,5 @@
 import { WarningIcon } from '@chakra-ui/icons';
-import { Text, Flex, useMultiStyleConfig, Fade, Slide } from '@chakra-ui/react';
+import { Text, Flex, useMultiStyleConfig, Fade } from '@chakra-ui/react';
 
 type Props = {
   error: string;

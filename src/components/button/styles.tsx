@@ -3,8 +3,9 @@ import { ComponentStyleConfig } from '@chakra-ui/theme';
 const buttonStyle: ComponentStyleConfig = {
   baseStyle: {
     width: '150px',
-    padding: '5px',
-    marginBottom: '20px',
+    padding: '8px',
+    marginBottom: '16px',
+
     color: 'cream.light',
     bgColor: 'green.base',
     border: '1px solid green.base',

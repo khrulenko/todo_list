@@ -7,9 +7,11 @@ const inputStyle: ComponentStyleConfig = {
       display: 'flex',
       position: 'relative',
       alignItems: 'center',
+
       width: '100%',
       maxWidth: '300px',
       height: '40px',
+
       '&:hover, &:focus': {
         borderColor: 'green.base',
         boxShadow: 'none',
@@ -28,12 +30,14 @@ const inputStyle: ComponentStyleConfig = {
       },
     },
     clear: {
+      zIndex: '1',
       position: 'absolute',
       right: '0',
-      zIndex: '1',
       padding: '0',
+
       width: '36px',
       height: '36px',
+
       backgroundColor: 'transparent',
       borderRadius: '50%',
       '&:hover': {

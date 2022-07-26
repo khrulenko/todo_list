@@ -6,10 +6,11 @@ const todoStyle: ComponentStyleConfig = {
 
     return {
       position: 'relative',
-      padding: '15px',
-      marginBottom: '10px',
+      padding: '16px',
+      marginBottom: '12px',
+
       bgColor: 'cream.base',
-      borderRadius: '6px',
+      borderRadius: '8px',
       fontSize: '18px',
 
       '&:before': {
@@ -18,12 +19,13 @@ const todoStyle: ComponentStyleConfig = {
         position: 'absolute',
         top: '0',
         left: '0',
+
         width: '10px',
         height: '100%',
+
         backgroundColor: isCompleted ? 'green.light' : 'orange.light',
-        borderTopLeftRadius: '6px',
-        borderBottomLeftRadius: '6px',
-        zIndex: '5',
+        borderTopLeftRadius: '8px',
+        borderBottomLeftRadius: '8px',
       },
     };
   },

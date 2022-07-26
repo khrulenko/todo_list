@@ -5,6 +5,7 @@ import inputStyle from '../components/input/styles';
 import todosPanelStyle from '../components/todosPanel/styles';
 import todoStyle from '../components/todoItem/styles';
 import userPanelStyle from '../components/userPanel/styles';
+import errorAlertStyle from '../components/errorAlert/styles';
 
 // color palette: https://colorhunt.co/palette/fbf8f1f7ecdee9dac154bab9
 
@@ -14,6 +15,7 @@ const componentsList = {
   button: buttonStyle,
   todo: todoStyle,
   input: inputStyle,
+  errorAlert: errorAlertStyle,
 };
 
 const theme = {
@@ -31,6 +33,9 @@ const theme = {
     },
     orange: {
       light: '#FAD9A1',
+    },
+    red: {
+      error: '#F39189',
     },
   },
   fontSizes: {},

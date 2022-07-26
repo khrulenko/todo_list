@@ -1,24 +1,15 @@
 import { AnyAction } from 'redux';
 
-export type User = {
-  id: string | number;
-  name?: string;
-  username?: string;
-  email?: string;
-  phone?: string;
-  website?: string;
-  createdAt?: string;
-  updatedAt?: string;
-} | null;
+export type User = { [key: string]: string | number };
 
 const SET_USER = 'SET/USER';
 
-export const setUserAction = (user: User) => ({
+export const setUserAction = (user: User | null) => ({
   type: SET_USER,
   payload: user,
 });
 
-const userReducer = (state: User = null, action: AnyAction) => {
+const userReducer = (state: User | null = null, action: AnyAction) => {
   switch (action.type) {
     case SET_USER:
       return action.payload;

@@ -14,6 +14,7 @@ type Props = {
   size?: ButtonSizes;
   onClick: AnyFunction;
   children?: any;
+  showAnimation?: boolean;
 };
 
 const Button = (props: Props) => {

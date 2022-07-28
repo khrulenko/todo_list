@@ -2,7 +2,7 @@ import { Flex, useMultiStyleConfig, Text, Box } from '@chakra-ui/react';
 import { useDispatch, useSelector } from 'react-redux';
 import { loadUser } from '../../api';
 import { Todo } from '../../reducers/todosReducer';
-import { getUser } from '../../store';
+import { getLoading, getUser } from '../../store';
 import Button from '../button';
 
 type Props = {
@@ -13,12 +13,14 @@ type Props = {
 const TodoItem = (props: Props) => {
   const { todo, index } = props;
   const { title, userId } = todo;
-  const user = useSelector(getUser);
-
-  const todoStyle = useMultiStyleConfig('todo', props);
 
   const dispatch = useDispatch();
   const onLoad = () => loadUser(dispatch, userId);
+  const user = useSelector(getUser);
+  const { requesting, endPoint } = useSelector(getLoading);
+  const isButtonDisabled = userId === user?.id || !userId || requesting;
+
+  const todoStyle = useMultiStyleConfig('todo', props);
 
   return (
     <Box sx={todoStyle}>
@@ -28,10 +30,11 @@ const TodoItem = (props: Props) => {
         </Text>
 
         <Button
-          disabled={userId === user?.id || !userId}
+          disabled={isButtonDisabled}
           variant="choseUser"
           size="sm"
           onClick={onLoad}
+          showAnimation={userId === endPoint}
         >
           user #
           <br />

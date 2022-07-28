@@ -1,4 +1,5 @@
 import { Dispatch } from 'redux';
+import { endLoading, startLoading } from './reducers/loadingReducer';
 import { setRequestError } from './reducers/requestErrorReducer';
 import { setTodosAction } from './reducers/todosReducer';
 import { setUserAction } from './reducers/userReducer';
@@ -15,13 +16,21 @@ export const loadTodos = (dispatch: Dispatch) =>
     .then((response) => response.json())
     .then((data) => dispatch(setTodosAction(data)));
 
-export const loadUser = (dispatch: Dispatch, endPoint: string | number = '') =>
-  fetch(usersApi + endPoint)
+export const loadUser = (
+  dispatch: Dispatch,
+  endPoint: string | number = ''
+) => {
+  dispatch(startLoading(endPoint));
+
+  return fetch(usersApi + endPoint)
     .then((response) => response.json())
     .then((data) => {
       dispatch(setUserAction(data));
+      dispatch(endLoading());
     })
     .catch(() => {
       dispatch(setRequestError(createUserLoadError(endPoint)));
+      dispatch(endLoading());
       setTimeout(() => dispatch(setRequestError(null)), 1500);
     });
+};

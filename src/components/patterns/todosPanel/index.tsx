@@ -99,9 +99,7 @@ const TodosPanel = () => {
         />
       </Flex>
 
-      <Flex {...wrapperParams}>
-        {filterButtons.map((filterButton) => createFilterButton(filterButton))}
-      </Flex>
+      <Flex {...wrapperParams}>{filterButtons.map(createFilterButton)}</Flex>
 
       {areThereTodosToShow ? (
         <TodosList todos={filteredTodos} />

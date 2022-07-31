@@ -21,69 +21,71 @@ const TodosPanel = () => {
   const [activeFilter, activeFilterSet] = useState<Filters>(Filters.All);
 
   //functions:
-  const dispatch = useDispatch();
-  const onLoad = () => loadTodos(dispatch);
-  const onRefresh = () => {
-    searchQuerySet('');
-    activeFilterSet(Filters.All);
-    onLoad();
-    dispatch(setRequestError(null));
-    dispatch(setUserAction(null));
-  };
-  const filterByTitle = useCallback(
-    (todos: Todos) => todos.filter((todo) => search(todo.title, searchQuery)),
-    [searchQuery]
-  );
-  const filterByCompleteness = (todos: Todos, filter: string) => {
-    switch (filter) {
-      case Filters.Active:
-        return todos.filter((todo) => !todo.completed);
+  const dispatch = useDispatch(),
+    onLoad = () => loadTodos(dispatch),
+    onRefresh = () => {
+      searchQuerySet('');
+      activeFilterSet(Filters.All);
+      onLoad();
+      dispatch(setRequestError(null));
+      dispatch(setUserAction(null));
+    },
+    filterByTitle = useCallback(
+      (todos: Todos) => todos.filter((todo) => search(todo.title, searchQuery)),
+      [searchQuery]
+    ),
+    filterByCompleteness = (todos: Todos, filter: string) => {
+      switch (filter) {
+        case Filters.Active:
+          return todos.filter((todo) => !todo.completed);
 
-      case Filters.Completed:
-        return todos.filter((todo) => todo.completed);
+        case Filters.Completed:
+          return todos.filter((todo) => todo.completed);
 
-      default:
-        return todos;
-    }
-  };
-  const isFilterActive = useCallback(
-    (filter: string) => filter === activeFilter,
-    [activeFilter]
-  );
+        default:
+          return todos;
+      }
+    },
+    isFilterActive = useCallback(
+      (filter: string) => filter === activeFilter,
+      [activeFilter]
+    );
 
   //data:
-  const todos = useSelector(getTodos);
-  const areTodosLoaded = useMemo(() => !!todos.length, [todos]);
-  const titleFilteredTodos = useMemo(
-    () => filterByTitle(todos),
-    [filterByTitle, todos]
-  );
-  const filteredTodos = useMemo(
-    () => filterByCompleteness(titleFilteredTodos, activeFilter),
-    [titleFilteredTodos, activeFilter]
-  );
-  const areThereTodosToShow = useMemo(
-    () => !!filteredTodos.length,
-    [filteredTodos]
-  );
-  const plugText = 'there are no todos';
+  const todos = useSelector(getTodos),
+    areTodosLoaded = useMemo(() => !!todos.length, [todos]),
+    titleFilteredTodos = useMemo(
+      () => filterByTitle(todos),
+      [filterByTitle, todos]
+    ),
+    filteredTodos = useMemo(
+      () => filterByCompleteness(titleFilteredTodos, activeFilter),
+      [titleFilteredTodos, activeFilter]
+    ),
+    areThereTodosToShow = useMemo(
+      () => !!filteredTodos.length,
+      [filteredTodos]
+    ),
+    filterButtons = Object.values(Filters),
+    plugText = 'there are no todos';
 
   //ui:
-  const todosPanelStyle = useMultiStyleConfig('todosPanel', {});
-  const createFilterButton = (filterName: Filters) => (
-    <Button
-      size="md"
-      disabled={isFilterActive(filterName)}
-      onClick={() => activeFilterSet(filterName)}
-    >
-      {capitalizeFirstLetter(filterName)}
-    </Button>
-  );
-  const wrapperParams = {
-    mb: '16px',
-    justify: 'center',
-    gap: '10px',
-  };
+  const todosPanelStyle = useMultiStyleConfig('todosPanel', {}),
+    createFilterButton = (filterName: Filters) => (
+      <Button
+        key={filterName}
+        size="md"
+        disabled={isFilterActive(filterName)}
+        onClick={() => activeFilterSet(filterName)}
+      >
+        {capitalizeFirstLetter(filterName)}
+      </Button>
+    ),
+    wrapperParams = {
+      mb: '16px',
+      justify: 'center',
+      gap: '10px',
+    };
 
   return areTodosLoaded ? (
     <Box sx={todosPanelStyle}>
@@ -98,9 +100,7 @@ const TodosPanel = () => {
       </Flex>
 
       <Flex {...wrapperParams}>
-        {createFilterButton(Filters.All)}
-        {createFilterButton(Filters.Active)}
-        {createFilterButton(Filters.Completed)}
+        {filterButtons.map((filterButton) => createFilterButton(filterButton))}
       </Flex>
 
       {areThereTodosToShow ? (

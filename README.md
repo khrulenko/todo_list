@@ -2,16 +2,17 @@
 
 [LINK TO APP PREVIEW](https://khrulenko.github.io/code_example/)
 
-Used Technologies:
-- HTML,
-- CSS,
-- JavaScript,
-- React:
+Used technologies:
+
+- HTML
+- CSS
+- JavaScript
+- React
   - functional components
   - React hooks
-- Redux,
+- Redux
   - combineReducers
   - connect
   - thunk middleware
-- TypeScript,
+- TypeScript
 - Chakra.ui (a UI library)

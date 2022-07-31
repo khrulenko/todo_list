@@ -20,7 +20,7 @@ const createUserLoadError = (endPoint: StrOrNum) =>
 export const loadTodos = (dispatch: Dispatch) => {
   dispatch(startLoadingTodos());
 
-  return fetch(todosApi)
+  fetch(todosApi)
     .then((response) => response.json())
     .then((data) => {
       dispatch(setTodosAction(data));
@@ -31,7 +31,7 @@ export const loadTodos = (dispatch: Dispatch) => {
 export const loadUser = (dispatch: Dispatch, endPoint: StrOrNum = '') => {
   dispatch(startLoadingUser(endPoint));
 
-  return fetch(usersApi + endPoint)
+  fetch(usersApi + endPoint)
     .then((response) => response.json())
     .then((data) => {
       dispatch(setUserAction(data));

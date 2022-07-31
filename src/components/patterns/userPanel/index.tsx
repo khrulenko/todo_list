@@ -1,5 +1,5 @@
 import { Box, useMultiStyleConfig, Text, Flex } from '@chakra-ui/react';
-import { User } from '../../reducers/userReducer';
+import { User } from '../../../data/reducers/userReducer';
 
 type Props = {
   user: User;

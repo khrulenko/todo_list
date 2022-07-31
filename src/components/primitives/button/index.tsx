@@ -3,7 +3,7 @@ import {
   chakra,
   useMultiStyleConfig,
 } from '@chakra-ui/react';
-import { AnyFunction } from '../../types';
+import { AnyFunction } from '../../../common/types';
 
 type ButtonSizes = 'sm' | 'md' | 'lg';
 type ButtonVariants = 'choseUser' | 'filter' | 'start';

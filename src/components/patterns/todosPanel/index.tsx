@@ -1,16 +1,16 @@
 import { useCallback, useMemo, useState } from 'react';
 import { Box, Flex, useMultiStyleConfig, Text, VStack } from '@chakra-ui/react';
 import { useDispatch, useSelector } from 'react-redux';
-import { loadTodos } from '../../api';
-import { Todos } from '../../reducers/todosReducer';
-import { getTodos } from '../../store';
-import Button from '../button';
+import { loadTodos } from '../../../common/api';
+import { Todos } from '../../../data/reducers/todosReducer';
+import { getTodos } from '../../../data/store';
+import Button from '../../primitives/button';
 import TodosList from '../todosList';
-import Input from '../input';
-import { capitalizeFirstLetter, search } from '../../utils';
-import { Filters } from '../../constants';
-import { setUserAction } from '../../reducers/userReducer';
-import { setRequestError } from '../../reducers/requestErrorReducer';
+import Input from '../../primitives/input';
+import { capitalizeFirstLetter, search } from '../../../common/utils';
+import { Filters } from '../../../common/constants';
+import { setUserAction } from '../../../data/reducers/userReducer';
+import { setRequestError } from '../../../data/reducers/requestErrorReducer';
 import Plug from '../plug';
 
 const TodosPanel = () => {

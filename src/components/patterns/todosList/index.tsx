@@ -1,4 +1,4 @@
-import { Todos } from '../../reducers/todosReducer';
+import { Todos } from '../../../data/reducers/todosReducer';
 import TodoItem from '../todoItem';
 
 type Props = {

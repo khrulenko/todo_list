@@ -1,12 +1,12 @@
 import { extendTheme } from '@chakra-ui/react';
-import buttonStyle from '../components/button/styles';
+import buttonStyle from '../components/primitives/button/styles';
 import globalStyles from './globalStyles';
-import inputStyle from '../components/input/styles';
-import todosPanelStyle from '../components/todosPanel/styles';
-import todoStyle from '../components/todoItem/styles';
-import userPanelStyle from '../components/userPanel/styles';
-import errorAlertStyle from '../components/errorAlert/styles';
-import plugStyle from '../components/plug/styles';
+import inputStyle from '../components/primitives/input/styles';
+import todosPanelStyle from '../components/patterns/todosPanel/styles';
+import todoStyle from '../components/patterns/todoItem/styles';
+import userPanelStyle from '../components/patterns/userPanel/styles';
+import errorAlertStyle from '../components/patterns/errorAlert/styles';
+import plugStyle from '../components/patterns/plug/styles';
 
 // color palette: https://colorhunt.co/palette/fbf8f1f7ecdee9dac154bab9
 

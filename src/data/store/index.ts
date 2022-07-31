@@ -16,7 +16,7 @@ export type State = {
 // selectors
 export const getTodos = (state: State) => state.todos;
 export const getUser = (state: State) => state.user;
-export const geRequestError = (state: State) => state.requestError;
+export const getRequestError = (state: State) => state.requestError;
 export const getLoading = (state: State) => state.loading;
 
 const rootReducer = combineReducers<State>({

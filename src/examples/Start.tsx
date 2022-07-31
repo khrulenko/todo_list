@@ -1,6 +1,6 @@
 import React from "react";
 import { connect, ConnectedProps, useDispatch } from "react-redux";
-import { loadTodos } from "../api";
+import { loadTodos } from "../common/api";
 
 import { RootState, isLoading, startLoadingAction } from ".";
 

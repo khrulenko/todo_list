@@ -5,7 +5,7 @@ import {
   Input as ChakraInput,
   useMultiStyleConfig,
 } from '@chakra-ui/react';
-import { AnyFunction, ChangeEvent } from '../../types';
+import { AnyFunction, ChangeEvent } from '../../../common/types';
 
 type Props = {
   type?: string;

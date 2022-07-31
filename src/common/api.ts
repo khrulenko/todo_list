@@ -1,8 +1,8 @@
 import { Dispatch } from 'redux';
-import { endLoading, startLoading } from './reducers/loadingReducer';
-import { setRequestError } from './reducers/requestErrorReducer';
-import { setTodosAction } from './reducers/todosReducer';
-import { setUserAction } from './reducers/userReducer';
+import { endLoading, startLoading } from '../data/reducers/loadingReducer';
+import { setRequestError } from '../data/reducers/requestErrorReducer';
+import { setTodosAction } from '../data/reducers/todosReducer';
+import { setUserAction } from '../data/reducers/userReducer';
 
 const url = 'https://mate.academy/students-api/';
 const todosApi = url + 'todos/';

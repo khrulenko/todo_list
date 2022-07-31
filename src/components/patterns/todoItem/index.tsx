@@ -1,9 +1,9 @@
 import { Flex, useMultiStyleConfig, Text, Box } from '@chakra-ui/react';
 import { useDispatch, useSelector } from 'react-redux';
-import { loadUser } from '../../api';
-import { Todo } from '../../reducers/todosReducer';
-import { getLoading, getUser } from '../../store';
-import Button from '../button';
+import { loadUser } from '../../../common/api';
+import { Todo } from '../../../data/reducers/todosReducer';
+import { getLoading, getUser } from '../../../data/store';
+import Button from '../../primitives/button';
 
 type Props = {
   todo: Todo;

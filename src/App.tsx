@@ -1,16 +1,16 @@
 import { Flex, Heading } from '@chakra-ui/react';
 import { useSelector } from 'react-redux';
-import ErrorAlert from './components/errorAlert';
-import Plug from './components/plug';
-import TodosPanel from './components/todosPanel';
-import UserPanel from './components/userPanel';
-import { geRequestError, getUser } from './store';
-import { isObjEmpty } from './utils';
+import ErrorAlert from './components/patterns/errorAlert';
+import Plug from './components/patterns/plug';
+import TodosPanel from './components/patterns/todosPanel';
+import UserPanel from './components/patterns/userPanel';
+import { getRequestError, getUser } from './data/store';
+import { isObjEmpty } from './common/utils';
 
 const App = () => {
   const user = useSelector(getUser);
   const isUserLoaded = user !== null && !isObjEmpty(user);
-  const requestError = useSelector(geRequestError);
+  const requestError = useSelector(getRequestError);
 
   return (
     <>

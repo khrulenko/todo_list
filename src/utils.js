@@ -1,6 +1,10 @@
-const capitalizeFirstLetter = (string: string) =>
+const capitalizeFirstLetter = (string: string): string =>
   string[0].toUpperCase() + string.substring(1);
 
-const isObjEmpty = (object: object) => Object.keys(object).length === 0;
+const isObjEmpty = (object: object): boolean =>
+  Object.keys(object).length === 0;
 
-export { capitalizeFirstLetter, isObjEmpty };
+const search = (string: string, query: string): boolean =>
+  string.toLowerCase().includes(query.toLowerCase());
+
+export { capitalizeFirstLetter, isObjEmpty, search };

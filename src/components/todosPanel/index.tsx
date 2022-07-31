@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 import { Box, Flex, useMultiStyleConfig, Text, VStack } from '@chakra-ui/react';
 import { useDispatch, useSelector } from 'react-redux';
 import { loadTodos } from '../../api';
@@ -7,7 +7,7 @@ import { getTodos } from '../../store';
 import Button from '../button';
 import TodosList from '../todosList';
 import Input from '../input';
-import { capitalizeFirstLetter } from '../../utils';
+import { capitalizeFirstLetter, search } from '../../utils';
 import { Filters } from '../../constants';
 import { setUserAction } from '../../reducers/userReducer';
 import { setRequestError } from '../../reducers/requestErrorReducer';
@@ -27,10 +27,10 @@ const TodosPanel = () => {
     dispatch(setRequestError(null));
     dispatch(setUserAction(null));
   };
-  const filterByTitle = (todos: Todos) =>
-    todos.filter((todo) =>
-      todo.title.toLowerCase().includes(searchQuery.toLowerCase())
-    );
+  const filterByTitle = useCallback(
+    (todos: Todos) => todos.filter((todo) => search(todo.title, searchQuery)),
+    [searchQuery]
+  );
   const filterByCompleteness = (todos: Todos, filter: string) => {
     switch (filter) {
       case Filters.Active:
@@ -43,16 +43,26 @@ const TodosPanel = () => {
         return todos;
     }
   };
-  const isFilterActive = (filter: string) => filter === activeFilter;
+  const isFilterActive = useCallback(
+    (filter: string) => filter === activeFilter,
+    [activeFilter]
+  );
 
   //data:
   const todos = useSelector(getTodos);
-  const areTodosLoaded = !!todos.length;
-  const filteredTodos = filterByCompleteness(
-    filterByTitle(todos),
-    activeFilter
+  const areTodosLoaded = useMemo(() => !!todos.length, [todos]);
+  const titleFilteredTodos = useMemo(
+    () => filterByTitle(todos),
+    [filterByTitle, todos]
   );
-  const areThereTodosToShow = !!filteredTodos.length;
+  const filteredTodos = useMemo(
+    () => filterByCompleteness(titleFilteredTodos, activeFilter),
+    [titleFilteredTodos, activeFilter]
+  );
+  const areThereTodosToShow = useMemo(
+    () => !!filteredTodos.length,
+    [filteredTodos]
+  );
   const plugText = 'there are no todos';
 
   //ui:

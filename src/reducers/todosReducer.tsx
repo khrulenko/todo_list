@@ -11,10 +11,8 @@ export type Todo = {
 
 export type Todos = Array<Todo>;
 
-// Action types - is just a constant. MUST have a unique value.
 const SET_TODOS = 'SET/TODOS';
 
-// Action creators - a function returning an action object
 export const setTodosAction = (todos: Todos) => ({
   type: SET_TODOS,
   payload: todos,

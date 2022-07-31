@@ -12,7 +12,6 @@ import { Filters } from '../../../common/constants';
 import { setUserAction } from '../../../data/reducers/userReducer';
 import { setRequestError } from '../../../data/reducers/requestErrorReducer';
 import Plug from '../plug';
-import { ChevronUpIcon } from '@chakra-ui/icons';
 
 const TodosPanel = () => {
   const [searchQuery, searchQuerySet] = useState<string>('');

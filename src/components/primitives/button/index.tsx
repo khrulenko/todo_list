@@ -6,7 +6,7 @@ import {
 import { AnyFunction } from '../../../common/types';
 
 type ButtonSizes = 'sm' | 'md' | 'lg';
-type ButtonVariants = 'choseUser' | 'filter' | 'start';
+type ButtonVariants = 'start' | 'up';
 
 type Props = {
   disabled?: boolean;

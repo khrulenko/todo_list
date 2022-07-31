@@ -31,7 +31,6 @@ const TodoItem = (props: Props) => {
 
         <Button
           disabled={isButtonDisabled}
-          variant="choseUser"
           size="sm"
           onClick={onLoad}
           showAnimation={userId === endPoint}

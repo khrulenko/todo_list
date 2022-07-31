@@ -12,6 +12,7 @@ import { Filters } from '../../../common/constants';
 import { setUserAction } from '../../../data/reducers/userReducer';
 import { setRequestError } from '../../../data/reducers/requestErrorReducer';
 import Plug from '../plug';
+import { ChevronUpIcon } from '@chakra-ui/icons';
 
 const TodosPanel = () => {
   const [searchQuery, searchQuerySet] = useState<string>('');
@@ -70,17 +71,21 @@ const TodosPanel = () => {
   const createFilterButton = (filterName: Filters) => (
     <Button
       size="md"
-      variant="filter"
       disabled={isFilterActive(filterName)}
       onClick={() => activeFilterSet(filterName)}
     >
       {capitalizeFirstLetter(filterName)}
     </Button>
   );
+  const wrapperParams = {
+    mb: '16px',
+    justify: 'center',
+    gap: '10px',
+  };
 
   return areTodosLoaded ? (
     <Box sx={todosPanelStyle}>
-      <Flex justify="center" gap="10px">
+      <Flex {...wrapperParams}>
         <Button onClick={onRefresh}>REFRESH</Button>
 
         <Input
@@ -90,7 +95,7 @@ const TodosPanel = () => {
         />
       </Flex>
 
-      <Flex justify="center" gap="10px">
+      <Flex {...wrapperParams}>
         {createFilterButton(Filters.All)}
         {createFilterButton(Filters.Active)}
         {createFilterButton(Filters.Completed)}

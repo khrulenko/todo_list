@@ -7,7 +7,6 @@ const buttonStyle: ComponentStyleConfig = {
     return {
       width: '150px',
       padding: '8px',
-      marginBottom: '16px',
 
       color: 'cream.light',
       bgColor: 'green.base',
@@ -62,8 +61,22 @@ const buttonStyle: ComponentStyleConfig = {
     };
   },
   sizes: {
-    sm: {
-      maxWidth: '60px',
+    sm: (props) => {
+      const { variant } = props;
+
+      return {
+        maxWidth: '60px',
+        height: variant === 'up' ? '60px' : '40px',
+        svg: {
+          width: '24px',
+          height: '24px',
+        },
+        '::after': {
+          width: '24px',
+          height: '24px',
+          margin: '8px',
+        },
+      };
     },
     md: {
       width: '100px',
@@ -74,17 +87,12 @@ const buttonStyle: ComponentStyleConfig = {
     },
   },
   variants: {
-    choseUser: {
-      marginBottom: '0',
-      '::after': {
-        width: '24px',
-        height: '24px',
-        margin: '8px',
-      },
+    up: {
+      position: 'fixed',
+      bottom: '24px',
+      right: '24px',
+      borderRadius: '50%',
     },
-    filter: (props) => ({
-      bgColor: 'green.base',
-    }),
     start: {
       border: '1px solid',
       borderColor: 'cream.dark',
@@ -95,13 +103,9 @@ const buttonStyle: ComponentStyleConfig = {
         color: 'cream.dark',
         opacity: '1',
       },
-      '&:focus': {
-        boxShadow: 'none',
-      },
       '&:disabled': {
         bgColor: 'cream.light',
         opacity: '1',
-        cursor: 'default',
         color: 'cream.dark',
         '&:hover': {
           bgColor: 'cream.light',

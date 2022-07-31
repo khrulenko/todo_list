@@ -6,6 +6,7 @@ import TodosPanel from './components/patterns/todosPanel';
 import UserPanel from './components/patterns/userPanel';
 import { getRequestError, getUser } from './data/store';
 import { isObjEmpty } from './common/utils';
+import UpButton from './components/patterns/upButton';
 
 const App = () => {
   const user = useSelector(getUser);
@@ -20,11 +21,14 @@ const App = () => {
 
       <Flex justifyContent="center" gap="18px">
         <TodosPanel />
+
         {isUserLoaded ? (
           <UserPanel user={user} />
         ) : (
           <Plug isSticky>here will be choosen user</Plug>
         )}
+
+        <UpButton />
       </Flex>
 
       {requestError && <ErrorAlert error={requestError} />}

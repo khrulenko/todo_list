@@ -4,4 +4,6 @@ enum Filters {
   Completed = 'completed',
 }
 
-export { Filters };
+const SHOW_UP_BUTTON_OFFSET = 500;
+
+export { Filters, SHOW_UP_BUTTON_OFFSET };

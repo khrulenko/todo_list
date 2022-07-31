@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { ChevronUpIcon } from '@chakra-ui/icons';
 import Button from '../../primitives/button';
+import { SHOW_UP_BUTTON_OFFSET } from '../../../common/constants';
 
 const UpButton = () => {
   const [scrollTop, setScrollTop] = useState(0);
@@ -8,7 +9,7 @@ const UpButton = () => {
   const goUp = () => {
     document.body.scrollIntoView();
   };
-  const showUpButton = scrollTop >= 500;
+  const showUpButton = scrollTop >= SHOW_UP_BUTTON_OFFSET;
 
   useEffect(() => {
     const onScroll = () => setScrollTop(window.pageYOffset);

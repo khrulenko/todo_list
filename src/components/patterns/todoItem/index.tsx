@@ -30,8 +30,9 @@ const TodoItem = (props: Props) => {
 
   const dispatch = useDispatch();
   const onLoad = () => loadUser(dispatch, userId);
-  const { requesting, endPoint } = loading;
-  const isButtonDisabled = userId === currentUser?.id || !userId || requesting;
+  const { isLoadingUser, endPoint } = loading;
+  const isButtonDisabled =
+    userId === currentUser?.id || !userId || isLoadingUser;
 
   const todoStyle = useMultiStyleConfig('todo', props);
 

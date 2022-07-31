@@ -40,8 +40,10 @@ const buttonStyle: ComponentStyleConfig = {
         content: "' '",
         position: 'absolute',
         display: showAnimation ? 'block' : 'none',
+
         width: '100%',
         height: '100%',
+
         borderRadius: 'inherit',
         bgColor: 'inherit',
         opacity: '0.8',
@@ -50,6 +52,12 @@ const buttonStyle: ComponentStyleConfig = {
         content: "' '",
         display: showAnimation ? 'block' : 'none',
         position: 'absolute',
+
+        margin: '8px',
+
+        width: '24px',
+        height: '24px',
+
         borderRadius: '50%',
         border: '4px solid',
         borderRightColor: 'transparent',
@@ -71,11 +79,6 @@ const buttonStyle: ComponentStyleConfig = {
           width: '24px',
           height: '24px',
         },
-        '::after': {
-          width: '24px',
-          height: '24px',
-          margin: '8px',
-        },
       };
     },
     md: {
@@ -91,6 +94,7 @@ const buttonStyle: ComponentStyleConfig = {
       position: 'fixed',
       bottom: '24px',
       right: '24px',
+
       borderRadius: '50%',
     },
     start: {
@@ -98,6 +102,7 @@ const buttonStyle: ComponentStyleConfig = {
       borderColor: 'cream.dark',
       bgColor: 'cream.dark',
       color: 'cream.light',
+
       '&:hover': {
         bgColor: 'cream.light',
         color: 'cream.dark',
@@ -107,6 +112,7 @@ const buttonStyle: ComponentStyleConfig = {
         bgColor: 'cream.light',
         opacity: '1',
         color: 'cream.dark',
+
         '&:hover': {
           bgColor: 'cream.light',
           opacity: '1',

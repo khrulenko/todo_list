@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Box, Flex, useMultiStyleConfig, Text, VStack } from '@chakra-ui/react';
 import { loadTodos } from '../../../common/api';
 import { Todos } from '../../../data/reducers/todosReducer';
-import { getTodos } from '../../../data/store';
+import { getLoading, getTodos } from '../../../data/store';
 import Button from '../../primitives/button';
 import TodosList from '../todosList';
 import Input from '../../primitives/input';
@@ -67,6 +67,7 @@ const TodosPanel = () => {
       [filteredTodos]
     ),
     filterButtons = Object.values(Filters),
+    { isLoadingTodos } = useSelector(getLoading),
     plugText = 'there are no todos';
 
   //ui:
@@ -90,7 +91,9 @@ const TodosPanel = () => {
   return areTodosLoaded ? (
     <Box sx={todosPanelStyle}>
       <Flex {...wrapperParams}>
-        <Button onClick={onRefresh}>REFRESH</Button>
+        <Button showAnimation={isLoadingTodos} onClick={onRefresh}>
+          REFRESH
+        </Button>
 
         <Input
           placeholder="search"
@@ -111,7 +114,7 @@ const TodosPanel = () => {
     <Plug size="md">
       <VStack gap="18px">
         <Text>{plugText}</Text>
-        <Button variant="start" onClick={onLoad}>
+        <Button showAnimation={isLoadingTodos} variant="start" onClick={onLoad}>
           LOAD TODOS
         </Button>
       </VStack>

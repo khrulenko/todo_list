@@ -1,5 +1,10 @@
 import { Dispatch } from 'redux';
-import { endLoading, startLoading } from '../data/reducers/loadingReducer';
+import {
+  endLoadingTodos,
+  endLoadingUser,
+  startLoadingTodos,
+  startLoadingUser,
+} from '../data/reducers/loadingReducer';
 import { setRequestError } from '../data/reducers/requestErrorReducer';
 import { setTodosAction } from '../data/reducers/todosReducer';
 import { setUserAction } from '../data/reducers/userReducer';
@@ -12,23 +17,29 @@ const usersApi = url + 'users/';
 const createUserLoadError = (endPoint: StrOrNum) =>
   `Error loading a user ${endPoint}`;
 
-export const loadTodos = (dispatch: Dispatch) =>
-  fetch(todosApi)
+export const loadTodos = (dispatch: Dispatch) => {
+  dispatch(startLoadingTodos());
+
+  return fetch(todosApi)
     .then((response) => response.json())
-    .then((data) => dispatch(setTodosAction(data)));
+    .then((data) => {
+      dispatch(setTodosAction(data));
+      dispatch(endLoadingTodos());
+    });
+};
 
 export const loadUser = (dispatch: Dispatch, endPoint: StrOrNum = '') => {
-  dispatch(startLoading(endPoint));
+  dispatch(startLoadingUser(endPoint));
 
   return fetch(usersApi + endPoint)
     .then((response) => response.json())
     .then((data) => {
       dispatch(setUserAction(data));
-      dispatch(endLoading());
+      dispatch(endLoadingUser());
     })
     .catch(() => {
       dispatch(setRequestError(createUserLoadError(endPoint)));
-      dispatch(endLoading());
+      dispatch(endLoadingUser());
       setTimeout(() => dispatch(setRequestError(null)), 1500);
     });
 };

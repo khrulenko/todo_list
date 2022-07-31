@@ -1,4 +1,5 @@
 import { Box, useMultiStyleConfig, Text, Flex } from '@chakra-ui/react';
+import { StrOrNum } from '../../../common/types';
 import { User } from '../../../data/reducers/userReducer';
 
 type Props = {
@@ -8,7 +9,7 @@ type Props = {
 const UserPanel = ({ user }: Props) => {
   const userPanelStyle = useMultiStyleConfig('userPanel', {});
 
-  const createDataRow = (title: string | number, data?: string | number) =>
+  const createDataRow = (title: string, data?: StrOrNum) =>
     data && (
       <Box>
         <Text>

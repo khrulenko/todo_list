@@ -1,6 +1,7 @@
 import { AnyAction } from 'redux';
+import { StrOrNum } from '../../common/types';
 
-export type User = { [key: string]: string | number };
+export type User = { [key: string]: StrOrNum };
 
 const SET_USER = 'SET/USER';
 

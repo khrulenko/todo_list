@@ -1,6 +1,6 @@
 import { useCallback, useMemo, useState } from 'react';
-import { Box, Flex, useMultiStyleConfig, Text, VStack } from '@chakra-ui/react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Box, Flex, useMultiStyleConfig, Text, VStack } from '@chakra-ui/react';
 import { loadTodos } from '../../../common/api';
 import { Todos } from '../../../data/reducers/todosReducer';
 import { getTodos } from '../../../data/store';

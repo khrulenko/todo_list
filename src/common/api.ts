@@ -3,12 +3,13 @@ import { endLoading, startLoading } from '../data/reducers/loadingReducer';
 import { setRequestError } from '../data/reducers/requestErrorReducer';
 import { setTodosAction } from '../data/reducers/todosReducer';
 import { setUserAction } from '../data/reducers/userReducer';
+import { StrOrNum } from './types';
 
 const url = 'https://mate.academy/students-api/';
 const todosApi = url + 'todos/';
 const usersApi = url + 'users/';
 
-const createUserLoadError = (endPoint: string | number) =>
+const createUserLoadError = (endPoint: StrOrNum) =>
   `Error loading a user ${endPoint}`;
 
 export const loadTodos = (dispatch: Dispatch) =>
@@ -16,10 +17,7 @@ export const loadTodos = (dispatch: Dispatch) =>
     .then((response) => response.json())
     .then((data) => dispatch(setTodosAction(data)));
 
-export const loadUser = (
-  dispatch: Dispatch,
-  endPoint: string | number = ''
-) => {
+export const loadUser = (dispatch: Dispatch, endPoint: StrOrNum = '') => {
   dispatch(startLoading(endPoint));
 
   return fetch(usersApi + endPoint)

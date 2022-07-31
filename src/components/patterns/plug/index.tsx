@@ -8,6 +8,9 @@ type Props = {
   isSticky?: boolean;
 };
 
+/*
+ * Plug component
+ */
 const Plug = (props: Props) => {
   const { children = 'here is empty yet' } = props;
   const styles = useMultiStyleConfig('plug', props);

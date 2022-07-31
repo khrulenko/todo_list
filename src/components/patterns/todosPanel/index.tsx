@@ -13,6 +13,9 @@ import { setUserAction } from '../../../data/reducers/userReducer';
 import { setRequestError } from '../../../data/reducers/requestErrorReducer';
 import Plug from '../plug';
 
+/*
+ * TodosPanel component
+ */
 const TodosPanel = () => {
   const [searchQuery, searchQuerySet] = useState<string>('');
   const [activeFilter, activeFilterSet] = useState<Filters>(Filters.All);

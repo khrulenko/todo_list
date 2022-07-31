@@ -17,6 +17,9 @@ type Props = {
   showAnimation?: boolean;
 };
 
+/*
+ * Button component
+ */
 const Button = (props: Props) => {
   const { onClick, disabled } = props;
   const buttonStyle = useMultiStyleConfig('button', props);

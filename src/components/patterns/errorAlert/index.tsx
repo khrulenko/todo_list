@@ -5,6 +5,9 @@ type Props = {
   error: string;
 };
 
+/*
+ * ErrorAlert component
+ */
 const ErrorAlert = ({ error }: Props) => {
   const styles = useMultiStyleConfig('errorAlert', {});
 

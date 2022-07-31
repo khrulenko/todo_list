@@ -14,6 +14,9 @@ type Props = {
   onChange: AnyFunction;
 };
 
+/*
+ * Input component
+ */
 const Input = (props: Props) => {
   const { type = 'text', placeholder = 'enter', value, onChange } = props;
   const onHandleChange = (event: ChangeEvent) => onChange(event.target.value);

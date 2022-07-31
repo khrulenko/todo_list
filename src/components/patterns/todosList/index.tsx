@@ -5,6 +5,9 @@ type Props = {
   todos: Todos;
 };
 
+/*
+ * TodosList component
+ */
 const TodosList = ({ todos }: Props) => {
   const areThereTodosToShow = !!todos.length;
 

@@ -6,17 +6,11 @@ type Props = {
   user: User;
 };
 
+/*
+ * UserPanel component
+ */
 const UserPanel = ({ user }: Props) => {
   const userPanelStyle = useMultiStyleConfig('userPanel', {});
-
-  const createDataRow = (title: string, data?: StrOrNum) =>
-    data && (
-      <Box>
-        <Text>
-          <b>{title}</b>: {data}
-        </Text>
-      </Box>
-    );
 
   const userDataMap = {
     name: 'User',
@@ -32,7 +26,19 @@ const UserPanel = ({ user }: Props) => {
   return (
     <Box sx={userPanelStyle}>
       <Flex direction={'column'} gap="10px">
-        {userPanelRows.map(([key, title]) => createDataRow(title, user?.[key]))}
+        {userPanelRows.map(([key, title]) => {
+          const data = user[key];
+
+          return (
+            data && (
+              <Box key={key}>
+                <Text>
+                  <b>{title}</b>: {data}
+                </Text>
+              </Box>
+            )
+          );
+        })}
       </Flex>
     </Box>
   );

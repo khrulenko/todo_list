@@ -3,6 +3,9 @@ import { ChevronUpIcon } from '@chakra-ui/icons';
 import Button from '../../primitives/button';
 import { SHOW_UP_BUTTON_OFFSET } from '../../../common/constants';
 
+/*
+ * UpButton component
+ */
 const UpButton = () => {
   const [scrollTop, setScrollTop] = useState(0);
 

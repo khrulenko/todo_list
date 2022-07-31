@@ -1,24 +1,37 @@
 import { Flex, useMultiStyleConfig, Text, Box } from '@chakra-ui/react';
-import { useDispatch, useSelector } from 'react-redux';
+import { connect, useDispatch } from 'react-redux';
 import { loadUser } from '../../../common/api';
+import { Loading } from '../../../data/reducers/loadingReducer';
 import { Todo } from '../../../data/reducers/todosReducer';
-import { getLoading, getUser } from '../../../data/store';
+import { User } from '../../../data/reducers/userReducer';
+import { getLoading, getUser, State } from '../../../data/store';
 import Button from '../../primitives/button';
 
 type Props = {
   todo: Todo;
   index: number;
+  currentUser: User;
+  loading: Loading;
 };
 
+const mapState = (state: State) => ({
+  currentUser: getUser(state),
+  loading: getLoading(state),
+});
+
+const connector = connect(mapState, {});
+
+/*
+ * TodoItem component
+ */
 const TodoItem = (props: Props) => {
-  const { todo, index } = props;
+  const { todo, index, currentUser, loading } = props;
   const { title, userId } = todo;
 
   const dispatch = useDispatch();
   const onLoad = () => loadUser(dispatch, userId);
-  const user = useSelector(getUser);
-  const { requesting, endPoint } = useSelector(getLoading);
-  const isButtonDisabled = userId === user?.id || !userId || requesting;
+  const { requesting, endPoint } = loading;
+  const isButtonDisabled = userId === currentUser?.id || !userId || requesting;
 
   const todoStyle = useMultiStyleConfig('todo', props);
 
@@ -44,4 +57,4 @@ const TodoItem = (props: Props) => {
   );
 };
 
-export default TodoItem;
+export default connector(TodoItem);

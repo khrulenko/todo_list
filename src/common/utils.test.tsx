@@ -8,11 +8,13 @@ describe('capitalizeFirstLetter', () => {
 
 describe('isObjEmpty', () => {
   test('returns true if an object is empty', () => {
-    expect(isObjEmpty({})).toBe(true);
+    const emptyObject = {};
+    expect(isObjEmpty(emptyObject)).toBe(true);
   });
 
   test('returns false if an object is not empty', () => {
-    expect(isObjEmpty({ test: 'test' })).toBe(false);
+    const notEmptyObject = { test: 'test' };
+    expect(isObjEmpty(notEmptyObject)).toBe(false);
   });
 });
 

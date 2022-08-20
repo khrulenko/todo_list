@@ -10,7 +10,7 @@ import { setTodosAction } from '../data/reducers/todosReducer';
 import { setUserAction } from '../data/reducers/userReducer';
 import { StrOrNum } from './types';
 
-const url = 'https://mate.academy/students-api/';
+const url = 'https://jsonplaceholder.typicode.com/';
 const todosApi = url + 'todos/';
 const usersApi = url + 'users/';
 

@@ -23,14 +23,14 @@ export const getUser = (state: State) => state.user;
 export const getRequestError = (state: State) => state.requestError;
 export const getLoading = (state: State) => state.loading;
 
-const rootReducer = combineReducers<State>({
+export const rootReducer = combineReducers<State>({
   todos: todosReducer,
   user: userReducer,
   requestError: requestErrorReducer,
   loading: loadingReducer,
 });
 
-// The store
+// store
 const store = createStore(
   rootReducer,
   composeWithDevTools(applyMiddleware(thunk))

@@ -9,7 +9,7 @@ export type Todo = {
 
 export type Todos = Array<Todo>;
 
-const SET_TODOS = 'SET/TODOS';
+const SET_TODOS = 'TODOS/SET';
 
 export const setTodosAction = (todos: Todos) => ({
   type: SET_TODOS,

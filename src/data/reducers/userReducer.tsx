@@ -3,7 +3,7 @@ import { StrOrNum } from '../../common/types';
 
 export type User = { [key: string]: StrOrNum };
 
-const SET_USER = 'SET/USER';
+const SET_USER = 'USER/SET';
 
 export const setUserAction = (user: User | null) => ({
   type: SET_USER,

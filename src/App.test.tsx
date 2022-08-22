@@ -5,7 +5,7 @@ import { mockedTodos } from './common/mocks';
 import { renderWithRedux } from './common/utils';
 
 describe('App', () => {
-  test('should include "load todos" button', () => {
+  test('should show "load todos" button', () => {
     renderWithRedux(<App />);
     const loadButton = screen.getByText(/load todos/i);
 

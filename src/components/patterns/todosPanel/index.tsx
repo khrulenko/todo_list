@@ -20,7 +20,7 @@ const TodosPanel = () => {
   const [searchQuery, searchQuerySet] = useState<string>('');
   const [activeFilter, activeFilterSet] = useState<Filters>(Filters.All);
 
-  //functions:
+  // functions:
   const dispatch = useDispatch(),
     onLoad = () => loadTodos(dispatch),
     onRefresh = () => {
@@ -51,7 +51,7 @@ const TodosPanel = () => {
       [activeFilter]
     );
 
-  //data:
+  // data:
   const todos = useSelector(getTodos),
     areTodosLoaded = useMemo(() => !!todos.length, [todos]),
     titleFilteredTodos = useMemo(
@@ -70,7 +70,7 @@ const TodosPanel = () => {
     { isLoadingTodos } = useSelector(getLoading),
     plugText = 'there are no todos';
 
-  //ui:
+  // ui:
   const todosPanelStyle = useMultiStyleConfig('todosPanel', {}),
     createFilterButton = (filterName: Filters) => (
       <Button

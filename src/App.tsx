@@ -1,16 +1,12 @@
 import { Flex, Heading } from '@chakra-ui/react';
 import { useSelector } from 'react-redux';
 import ErrorAlert from './components/patterns/errorAlert';
-import Plug from './components/patterns/plug';
 import TodosPanel from './components/patterns/todosPanel';
 import UserPanel from './components/patterns/userPanel';
-import { getRequestError, getUser } from './data/store';
-import { isObjEmpty } from './common/utils';
+import { getRequestError } from './data/store';
 import UpButton from './components/patterns/upButton';
 
 const App = () => {
-  const user = useSelector(getUser);
-  const isUserLoaded = user !== null && !isObjEmpty(user);
   const requestError = useSelector(getRequestError);
 
   return (
@@ -22,11 +18,7 @@ const App = () => {
       <Flex justifyContent="center" gap="18px">
         <TodosPanel />
 
-        {isUserLoaded ? (
-          <UserPanel user={user} />
-        ) : (
-          <Plug isSticky>here will be choosen user</Plug>
-        )}
+        <UserPanel />
 
         <UpButton />
       </Flex>

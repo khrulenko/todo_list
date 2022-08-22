@@ -1,15 +1,16 @@
 import { Box, useMultiStyleConfig, Text, Flex } from '@chakra-ui/react';
-import { StrOrNum } from '../../../common/types';
-import { User } from '../../../data/reducers/userReducer';
-
-type Props = {
-  user: User;
-};
+import { useSelector } from 'react-redux';
+import { isObjEmpty } from '../../../common/utils';
+import { getUser } from '../../../data/store';
+import Plug from '../plug';
 
 /*
  * UserPanel component
  */
-const UserPanel = ({ user }: Props) => {
+const UserPanel = () => {
+  const user = useSelector(getUser);
+  const isUserLoaded = user !== null && !isObjEmpty(user);
+
   const userPanelStyle = useMultiStyleConfig('userPanel', {});
 
   const userDataMap = {
@@ -23,7 +24,7 @@ const UserPanel = ({ user }: Props) => {
 
   const userPanelRows = Object.entries(userDataMap);
 
-  return (
+  return isUserLoaded ? (
     <Box sx={userPanelStyle}>
       <Flex direction={'column'} gap="10px">
         {userPanelRows.map(([key, title]) => {
@@ -41,6 +42,8 @@ const UserPanel = ({ user }: Props) => {
         })}
       </Flex>
     </Box>
+  ) : (
+    <Plug isSticky>here will be choosen user</Plug>
   );
 };
 

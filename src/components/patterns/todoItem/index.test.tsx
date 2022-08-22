@@ -4,28 +4,7 @@ import userEvent from '@testing-library/user-event';
 import { renderWithRedux } from '../../../common/utils';
 import TodoItem from '.';
 import { loadUser } from '../../../common/api';
-
-const mockedTodo = {
-  userId: 1,
-  id: 1,
-  title: 'delectus aut autem',
-  completed: false,
-  createdAt: 'string',
-  updatedAt: 'string',
-};
-
-const mockedUser = {
-  id: 1,
-  name: 'Leanne Graham',
-  username: 'Bret',
-  email: 'Sincere@april.biz',
-};
-
-const mockedLoading = {
-  isLoadingUser: false,
-  isLoadingTodos: false,
-  endPoint: '',
-};
+import { mockedLoading, mockedTodo, mockedUser } from '../../../common/mocks';
 
 jest.mock('../../../common/api');
 

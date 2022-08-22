@@ -30,7 +30,7 @@ const TodoItem = (props: Props) => {
   const todoStyle = useMultiStyleConfig('todo', props);
 
   return (
-    <Box sx={todoStyle}>
+    <Box data-testid="todoitem" sx={todoStyle}>
       <Flex align="center" justify="space-between" gap="10px">
         <Text>
           <b>{index}.</b> {title}

@@ -1,28 +1,8 @@
 import '@testing-library/jest-dom';
 import { screen } from '@testing-library/react';
 import App from './App';
+import { mockedTodos } from './common/mocks';
 import { renderWithRedux } from './common/utils';
-
-const mockedTodos = [
-  {
-    userId: 1,
-    id: 1,
-    title: 'delectus aut autem',
-    completed: false,
-  },
-  {
-    userId: 1,
-    id: 2,
-    title: 'quis ut nam facilis et officia qui',
-    completed: false,
-  },
-  {
-    userId: 1,
-    id: 3,
-    title: 'fugiat veniam minus',
-    completed: false,
-  },
-];
 
 describe('App', () => {
   test('should include "load todos" button', () => {

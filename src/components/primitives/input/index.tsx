@@ -27,6 +27,7 @@ const Input = (props: Props) => {
   return (
     <Box sx={styles.wrapper}>
       <ChakraInput
+        data-testid="input"
         sx={styles.input}
         type={type}
         placeholder={placeholder}

@@ -10,7 +10,7 @@ export type Loading = {
 const START_LOADING_USER = 'USER/LOADING/START';
 const END_LOADING_USER = 'USER/LOADING/END';
 const START_LOADING_TODOS = 'TODOS/LOADING/START';
-const END_LOADING_TODOS = 'TOODS/LOADING/END';
+const END_LOADING_TODOS = 'TODOS/LOADING/END';
 
 export const startLoadingUser = (endPoint: StrOrNum = '') => ({
   type: START_LOADING_USER,

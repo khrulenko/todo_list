@@ -25,7 +25,7 @@ const UserPanel = () => {
   const userPanelRows = Object.entries(userDataMap);
 
   return isUserLoaded ? (
-    <Box sx={userPanelStyle}>
+    <Box data-testid="userpanel" sx={userPanelStyle}>
       <Flex direction="column" gap="10px">
         {userPanelRows.map(([key, title]) => {
           const data = user[key];

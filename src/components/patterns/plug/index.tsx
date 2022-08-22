@@ -16,7 +16,7 @@ const Plug = (props: Props) => {
   const styles = useMultiStyleConfig('plug', props);
 
   return (
-    <Box sx={styles.wrapper}>
+    <Box data-testid="plugtext" sx={styles.wrapper}>
       <Box sx={styles.plug}>{children}</Box>
     </Box>
   );

@@ -9,8 +9,8 @@ Used technologies:
 - JavaScript
 - TypeScript
 - React
+  - hooks
   - functional components
-  - React hooks
 - Redux
   - hooks
   - thunk middleware

@@ -25,7 +25,7 @@ const Input = (props: Props) => {
   const styles = useMultiStyleConfig('input', props);
 
   return (
-    <Box sx={styles.wrapper}>
+    <Box data-testid="inputwrapper" sx={styles.wrapper}>
       <ChakraInput
         data-testid="input"
         sx={styles.input}
@@ -34,7 +34,12 @@ const Input = (props: Props) => {
         value={value}
         onChange={onHandleChange}
       />
-      <Button sx={styles.clear} size="sm" onClick={onHandleClear}>
+      <Button
+        data-testid="clearButton"
+        sx={styles.clear}
+        size="sm"
+        onClick={onHandleClear}
+      >
         <CloseIcon color="green.base" />
       </Button>
     </Box>

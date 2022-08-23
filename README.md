@@ -7,6 +7,7 @@ Used technologies:
 - HTML
 - CSS
 - JavaScript
+- TypeScript
 - React
   - functional components
   - React hooks
@@ -14,7 +15,6 @@ Used technologies:
   - combineReducers
   - connect
   - thunk middleware
-- TypeScript
 - Jest
 - React Testing Library
 - Chakra.ui (a UI library)

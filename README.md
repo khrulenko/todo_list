@@ -12,8 +12,7 @@ Used technologies:
   - functional components
   - React hooks
 - Redux
-  - combineReducers
-  - connect
+  - hooks
   - thunk middleware
 - Jest
 - React Testing Library

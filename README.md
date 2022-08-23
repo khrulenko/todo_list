@@ -15,5 +15,6 @@ Used technologies:
   - connect
   - thunk middleware
 - TypeScript
-- Jest unit testing
+- Jest
+- React Testing Library
 - Chakra.ui (a UI library)

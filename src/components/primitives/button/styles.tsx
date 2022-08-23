@@ -1,4 +1,5 @@
 import { ComponentStyleConfig } from '@chakra-ui/theme';
+import { getTabFocusSelectors } from '../../../common/utils';
 
 const buttonStyle: ComponentStyleConfig = {
   baseStyle: (props) => {
@@ -16,9 +17,8 @@ const buttonStyle: ComponentStyleConfig = {
         bgColor: 'green.base',
         opacity: '0.5',
       },
-      '&:focus': {
-        boxShadow: 'none',
-      },
+
+      ...getTabFocusSelectors(),
       '&:disabled': {
         bgColor: 'green.base',
         opacity: '0.5',
@@ -103,6 +103,7 @@ const buttonStyle: ComponentStyleConfig = {
       bgColor: 'cream.dark',
       color: 'cream.light',
 
+      ...getTabFocusSelectors({ outlineColor: 'brown' }),
       '&:hover': {
         bgColor: 'cream.light',
         color: 'cream.dark',

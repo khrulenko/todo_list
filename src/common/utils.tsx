@@ -1,3 +1,4 @@
+import { ChakraProps } from '@chakra-ui/react';
 import { render, RenderOptions } from '@testing-library/react';
 import { PropsWithChildren } from 'react';
 import { Provider } from 'react-redux';
@@ -25,6 +26,28 @@ const renderWithRedux = (
   };
 };
 
+const getTabFocusSelectors = (styles?: ChakraProps): object => {
+  const defaultFocusStyles = {
+    outline: 'solid 1px',
+    outlineColor: 'green',
+    outlineOffset: '0',
+    opacity: '0.5',
+    boxShadow: 'none',
+  };
+
+  const mergedStyles = {
+    ...defaultFocusStyles,
+    ...styles,
+  };
+
+  return {
+    '@supports not selector(:focus-visible)': {
+      _focus: mergedStyles,
+    },
+    ':focus-visible': mergedStyles,
+  };
+};
+
 const capitalizeFirstLetter = (string: string): string =>
   string[0].toUpperCase() + string.substring(1);
 
@@ -34,4 +57,10 @@ const isObjEmpty = (object: object): boolean =>
 const search = (string: string, query: string): boolean =>
   string.toLowerCase().includes(query.toLowerCase());
 
-export { renderWithRedux, capitalizeFirstLetter, isObjEmpty, search };
+export {
+  renderWithRedux,
+  getTabFocusSelectors,
+  capitalizeFirstLetter,
+  isObjEmpty,
+  search,
+};

@@ -1,4 +1,43 @@
-import { capitalizeFirstLetter, isObjEmpty, search } from './utils';
+import {
+  capitalizeFirstLetter,
+  getTabFocusSelectors,
+  isObjEmpty,
+  search,
+} from './utils';
+
+describe('getTabFocusSelectors', () => {
+  const mokedFocusStyles = {
+    outline: 'solid 1px',
+    outlineColor: 'green',
+    outlineOffset: '0',
+    opacity: '0.5',
+    boxShadow: 'none',
+  };
+
+  test('should return default styles if there are no passed styles', () => {
+    const resultWithNoPassedStyles = {
+      '@supports not selector(:focus-visible)': {
+        _focus: mokedFocusStyles,
+      },
+      ':focus-visible': mokedFocusStyles,
+    };
+
+    expect(getTabFocusSelectors()).toEqual(resultWithNoPassedStyles);
+  });
+
+  test('should merge default styles with passed styles', () => {
+    const resultWithPassedStyles = {
+      '@supports not selector(:focus-visible)': {
+        _focus: { ...mokedFocusStyles, outlineColor: 'brown' },
+      },
+      ':focus-visible': { ...mokedFocusStyles, outlineColor: 'brown' },
+    };
+
+    expect(getTabFocusSelectors({ outlineColor: 'brown' })).toEqual(
+      resultWithPassedStyles
+    );
+  });
+});
 
 describe('capitalizeFirstLetter', () => {
   test('returns a string with capitalized first letter', () => {

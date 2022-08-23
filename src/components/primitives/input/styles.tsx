@@ -1,4 +1,5 @@
 import { ComponentStyleConfig } from '@chakra-ui/theme';
+import { getTabFocusSelectors } from '../../../common/utils';
 
 const inputStyle: ComponentStyleConfig = {
   parts: ['wrapper', 'input', 'clear'],
@@ -40,6 +41,8 @@ const inputStyle: ComponentStyleConfig = {
 
       backgroundColor: 'transparent',
       borderRadius: '50%',
+
+      ...getTabFocusSelectors(),
       '&:hover': {
         backgroundColor: 'transparent',
       },

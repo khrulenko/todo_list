@@ -64,5 +64,6 @@ describe('search', () => {
 
   test('returns false if a string does not include query substring', () => {
     expect(search('Test', 'str')).toBe(false);
+    expect(search('Test r', 'str')).toBe(false);
   });
 });

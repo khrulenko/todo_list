@@ -13,6 +13,8 @@ const buttonStyle: ComponentStyleConfig = {
       bgColor: 'green.base',
       border: '1px solid green.base',
 
+      transition: 'all 0.5s',
+
       '&:hover': {
         bgColor: 'green.base',
         opacity: '0.5',

@@ -7,12 +7,12 @@ import {
 } from '@chakra-ui/react';
 import { AnyFunction, ChangeEvent } from '../../../common/types';
 
-type Props = {
+interface Props {
   type?: string;
   placeholder?: string;
   value: any;
   onChange: AnyFunction;
-};
+}
 
 /*
  * Input component

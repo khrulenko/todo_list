@@ -1,7 +1,9 @@
 import { AnyAction } from 'redux';
 import { StrOrNum } from '../../common/types';
 
-export type User = { [key: string]: StrOrNum };
+export interface User {
+  [key: string]: StrOrNum;
+}
 
 const SET_USER = 'USER/SET';
 

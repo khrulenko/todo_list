@@ -2,11 +2,11 @@ import { Box, chakra, useMultiStyleConfig } from '@chakra-ui/react';
 
 type PlugSizes = 'sm' | 'md' | 'lg';
 
-type Props = {
+interface Props {
   children?: any;
   size?: PlugSizes;
   isSticky?: boolean;
-};
+}
 
 /*
  * Plug component

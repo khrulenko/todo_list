@@ -1,9 +1,9 @@
 import { WarningIcon } from '@chakra-ui/icons';
 import { Text, Flex, useMultiStyleConfig, Fade } from '@chakra-ui/react';
 
-type Props = {
+interface Props {
   error: string;
-};
+}
 
 /*
  * ErrorAlert component

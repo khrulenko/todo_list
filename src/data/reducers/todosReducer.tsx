@@ -1,11 +1,11 @@
 import { AnyAction } from 'redux';
 
-export type Todo = {
+export interface Todo {
   id: number;
   userId: number;
   title: string;
   completed: boolean;
-};
+}
 
 export type Todos = Array<Todo>;
 

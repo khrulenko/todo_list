@@ -1,9 +1,9 @@
 import { Todos } from '../../../data/reducers/todosReducer';
 import TodoItem from '../todoItem';
 
-type Props = {
+interface Props {
   todos: Todos;
-};
+}
 
 /*
  * TodosList component

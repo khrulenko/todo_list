@@ -10,12 +10,12 @@ import requestErrorReducer from '../reducers/requestErrorReducer';
 import todosReducer, { Todos } from '../reducers/todosReducer';
 import userReducer, { User } from '../reducers/userReducer';
 
-export type State = {
+export interface State {
   todos: Todos;
   user: User;
   requestError: string | null;
   loading: Loading;
-};
+}
 
 // selectors
 export const getTodos = (state: State) => state.todos;

@@ -8,14 +8,14 @@ import { AnyFunction } from '../../../common/types';
 type ButtonSizes = 'sm' | 'md' | 'lg';
 type ButtonVariants = 'start' | 'up';
 
-type Props = {
+interface Props {
   disabled?: boolean;
   variant?: ButtonVariants;
   size?: ButtonSizes;
   onClick: AnyFunction;
   children?: any;
   showAnimation?: boolean;
-};
+}
 
 /*
  * Button component

@@ -6,10 +6,10 @@ import { loadUser } from '../../../common/api';
 import { Todo } from '../../../data/reducers/todosReducer';
 import Button from '../../primitives/button';
 
-type Props = {
+interface Props {
   todo: Todo;
   index: number;
-};
+}
 
 /*
  * TodoItem component

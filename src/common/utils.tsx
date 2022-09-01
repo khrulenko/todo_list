@@ -4,6 +4,7 @@ import { PropsWithChildren } from 'react';
 import { Provider } from 'react-redux';
 import { legacy_createStore as createStore } from 'redux';
 import { rootReducer } from '../data/store';
+
 interface ExtendedRenderOptions extends Omit<RenderOptions, 'queries'> {
   initialState?: any;
   store?: any;

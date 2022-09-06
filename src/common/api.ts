@@ -8,6 +8,7 @@ import {
 import { setRequestError } from '../data/reducers/requestErrorReducer';
 import { setTodosAction } from '../data/reducers/todosReducer';
 import { setUserAction } from '../data/reducers/userReducer';
+import { REQUEST_ERROR_SHOW_TIME } from './constants';
 import { StrOrNum } from './types';
 
 const url = 'https://jsonplaceholder.typicode.com/';
@@ -24,6 +25,15 @@ export const loadTodos = (dispatch: Dispatch) => {
     .then((response) => response.json())
     .then((data) => {
       dispatch(setTodosAction(data));
+    })
+    .catch(() => {
+      dispatch(setRequestError('Error loading todos'));
+      setTimeout(
+        () => dispatch(setRequestError(null)),
+        REQUEST_ERROR_SHOW_TIME
+      );
+    })
+    .finally(() => {
       dispatch(endLoadingTodos());
     });
 };
@@ -35,11 +45,15 @@ export const loadUser = (dispatch: Dispatch, endPoint: StrOrNum = '') => {
     .then((response) => response.json())
     .then((data) => {
       dispatch(setUserAction(data));
-      dispatch(endLoadingUser());
     })
     .catch(() => {
       dispatch(setRequestError(createUserLoadError(endPoint)));
+      setTimeout(
+        () => dispatch(setRequestError(null)),
+        REQUEST_ERROR_SHOW_TIME
+      );
+    })
+    .finally(() => {
       dispatch(endLoadingUser());
-      setTimeout(() => dispatch(setRequestError(null)), 1500);
     });
 };

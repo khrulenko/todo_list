@@ -18,10 +18,15 @@ export interface State {
 }
 
 // selectors
-export const getTodos = (state: State) => state.todos;
-export const getUser = (state: State) => state.user;
-export const getRequestError = (state: State) => state.requestError;
-export const getLoading = (state: State) => state.loading;
+const createSelector =
+  <K extends keyof State>(dataField: K) =>
+  (state: State) =>
+    state[dataField];
+
+export const getTodos = createSelector('todos');
+export const getUser = createSelector('user');
+export const getRequestError = createSelector('requestError');
+export const getLoading = createSelector('loading');
 
 export const rootReducer = combineReducers<State>({
   todos: todosReducer,
